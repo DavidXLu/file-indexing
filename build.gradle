@@ -1,0 +1,31 @@
+plugins {
+    id 'net.ltgt.apt' version '0.10'
+}
+
+repositories {
+    mavenCentral()
+}
+
+apply plugin: "java"
+
+dependencies {
+    compile(
+        "com.fasterxml.jackson.dataformat:jackson-dataformat-xml:$jacksonVersion",
+        "com.fasterxml.jackson.core:jackson-databind:$jacksonVersion",
+        "com.fasterxml.jackson.datatype:jackson-datatype-jdk8:$jacksonVersion",
+        "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jacksonVersion",
+        "com.google.guava:guava:$guavaVersion",
+        "org.apache.commons:commons-lang3:$commonslangVersion",
+        "org.apache.commons:commons-io:$commonsioVersion",
+        "org.slf4j:slf4j-api:$slf4jVersion",
+        "io.vavr:vavr:$vavrVersion"
+    )
+    testCompile(
+        "junit:junit:$junitVersion",
+        "org.slf4j:slf4j-log4j12:$slf4jVersion",
+        "org.assertj:assertj-core:$assertjVersion"
+    )
+    compileOnly("org.projectlombok:lombok:$lombokVersion")
+    testCompileOnly("org.projectlombok:lombok:$lombokVersion")
+    apt("org.projectlombok:lombok:$lombokVersion")
+}
